@@ -26,7 +26,7 @@ app.use(cors())
 app.use(route)
 
 app.listen(PORT, () => {
-  console.log(`${fire} Api Running on Port: ${PORT}`)
+  console.log(`${fire} Api Running on Port Boat: ${PORT}`)
 })
 
 export default app

@@ -2,6 +2,7 @@ import { prisma } from '@prisma/client'
 import axios from 'axios'
 import { response } from 'express'
 import prismaClient from '../Prisma'
+import { sign } from 'jsonwebtoken'
 
 interface IAccessToken {
   access_token: string
@@ -54,7 +55,22 @@ class Authenticateuserservices {
       })
     }
 
-    return response.data
+    const token = sign(
+      {
+        user: {
+          name: user.name,
+          avatar_url: user.avatar_url,
+          id: user.id,
+        },
+      },
+      process.env.JWT_SECRET,
+      {
+        subject: user.id,
+        expiresIn: '1d',
+      }
+    )
+
+    return { token, user }
   }
 }
 

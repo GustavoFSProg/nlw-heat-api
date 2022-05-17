@@ -11,7 +11,7 @@ route.post('/messages', ensureAuthenticated, new CreateMessageController().handl
 route.get('/messages/last3', new GetLast3MessageServiceController().handle)
 route.get('/profile', ensureAuthenticated, new ProfileUserController().handle)
 route.get('/', (req: Request, res: Response) => {
-  return res.send({ API: 'API Running on heroko!' })
+  return res.send({ API: 'API Running on heroku-br!' })
 })
 
 export { route }
